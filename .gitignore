@@ -1,14 +1,14 @@
-.idea
+# Windows
+[Dd]esktop.ini
+Thumbs.db
+$RECYCLE.BIN/
+
+# macOS
 .DS_Store
-package-lock.json
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
 
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-miniprogram_dist
-miniprogram_dev
-node_modules
-coverage
+# Node.js
+node_modules/
