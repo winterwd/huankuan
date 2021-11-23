@@ -1,0 +1,12 @@
+{
+  "name": "Huankuan",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {},
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "yapople": "^0.4.7"
+  }
+}
