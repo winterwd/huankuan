@@ -1,0 +1,11 @@
+<!--miniprogram/components/cloudTipModal/index.wxml-->
+<view class="modal_tip" wx:if="{{showUseTip}}">
+  <view class="modal_tip_back"></view>
+  <view class="modal_tip_detail">
+    <view class="modal_tip_detail_title">使用须知</view>
+    <view class="modal_tip_detail_tip">
+      {{tipText}}
+    </view>
+    <view bindtap="onChanged" class="modal_tip_detail_button">已知悉</view>
+  </view>
+</view>
