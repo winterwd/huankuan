@@ -1,6 +1,19 @@
 <!--index.wxml-->
 <view class="container">
-  <!-- <view class="title">还款提醒</view> -->
-  This is page data.
+  
+  <view class="formContainer">
+    <view class="formItem">
+      <view class="formItem_title">邮箱：</view>
+      <input id="account" class="formItem_input" type="text" value="{{authInfo.account}}" confirm-type="next" bindinput="bindKeyInput" placeholder="输入邮箱账号" placeholder-style="color:#999"/>
+    </view>
+
+    <view class="formItem">
+      <view class="formItem_title">密码：</view>
+      <input id="password" class="formItem_input" password type="text" value="{{authInfo.password}}" bindinput="bindKeyInput" bindconfirm="submitAction" placeholder="输入邮箱密码" placeholder-style="color:#999"/>
+    </view>
+  </view>
+
+  <button type="primary" size="default" disabled="{{disabledBtn}}">授权登录</button>
+
   <use-tip-modal showUseTipProps="{{showTip}}" bind:customevent="useTipModalTap"></use-tip-modal>
 </view>

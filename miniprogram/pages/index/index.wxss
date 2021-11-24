@@ -2,8 +2,37 @@
 
 page {
   padding-top: 54rpx;
-  background-color: #f6f6f6;
+  background-color: #f7f7f7;
   padding-bottom: 60rpx;
+}
+
+.formContainer {
+  width: 100%;
+  padding: 30rpx;
+}
+
+.formItem {
+  width: 85%;
+  margin: 0 auto;
+  margin-bottom: 60rpx;
+}
+
+.formItem_title {
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  font-size: 36rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.formItem_input {
+  width: 100%;
+  height: 80rpx;
+  border-bottom-style: solid;
+  border-bottom-color: lightgray;
+  border-bottom-width: 2rpx;
+  margin-bottom: 10rpx;
 }
 
 .title {
