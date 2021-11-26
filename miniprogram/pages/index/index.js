@@ -1,4 +1,6 @@
 // index.js
+// const eMailOAuth = require('../../utils/eMailOAuth')
+import eMailOAuth from "../../utils/eMailOAuth";
 
 Page({
   data: {
@@ -18,17 +20,16 @@ Page({
       showTip: !show
     })
 
-    let info = wx.getStorageSync('OAuthInfoKey')
+    let authInfo = wx.getStorageSync('OAuthInfoKey')
     console.log("OAuthInfoKey:" + info)
     if (info != null && info != "") {
       this.setData({
-        isOAuthing: true,
         disabledBtn: false,
-        authInfo: info
+        authInfo
       })
 
       // login
-
+      loginAction()
     } 
   },
 
@@ -42,13 +43,37 @@ Page({
     let type = e.target.id
     if (type == "account") {
       console.log("bindKeyInput account:" + e.detail.value)
+      account = e.detail.value
+      password = this.data.authInfo.password
+      enableLoginBtn(account, password)
     }
     else if (type == "password") {
       console.log("bindKeyInput password:" + e.detail.value)
+      password = e.detail.value;
+      account = this.data.authInfo.account
+      enableLoginBtn(account, password)
     }
   },
 
-  submitAction(e) {
-    console.log("submitAction:" + e)
+  enableLoginBtn(account, password) {
+    enable = account.has("@") && account.has('.com') && password.length > 3
+    this.setData({
+      disabledBtn: !enable,
+      authInfo: {account, password}
+    })
+  },
+
+  loginAction(e) {
+    console.log('login...')
+    isOAuthing = true
+    this.setData({isOAuthing})
+
+    this.eMailOAuth = eMailOAuth(this.data.authInfo, (res) => {
+      this.setData({isOAuthing:false})
+
+      if (res != null) {
+        console.log(res)
+      }
+    })
   }
 });

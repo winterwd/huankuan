@@ -7,6 +7,9 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
+    "net": "^1.0.2",
+    "tls": "^0.0.1",
+    "util": "^0.12.4",
     "yapople": "^0.4.7"
   }
 }

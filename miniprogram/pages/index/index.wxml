@@ -9,7 +9,7 @@
 
     <view class="formItem">
       <view class="formItem_title">密码：</view>
-      <input id="password" class="formItem_input" password type="text" value="{{authInfo.password}}" bindinput="bindKeyInput" bindconfirm="submitAction" placeholder="输入邮箱密码" placeholder-style="color:#999"/>
+      <input id="password" class="formItem_input" password type="text" value="{{authInfo.password}}" bindinput="bindKeyInput" bindconfirm="loginAction" placeholder="输入邮箱密码" placeholder-style="color:#999"/>
     </view>
   </view>
 
