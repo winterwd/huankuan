@@ -19,6 +19,9 @@
     "uploadWithSourceMap": true,
     "compileHotReLoad": true,
     "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -36,7 +39,7 @@
     "useCompilerPlugins": false
   },
   "appid": "wx94afed704a1deb5d",
-  "projectname": "还款提醒",
+  "projectname": "%E8%BF%98%E6%AC%BE%E6%8F%90%E9%86%92",
   "libVersion": "2.14.1",
   "condition": {
     "search": {

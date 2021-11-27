@@ -1,23 +1,16 @@
 // eMailOAuth
 
-const { Client } = require('yapople')
+// const { nodemailer } = require('nodemailer')
 
-function popClient(username, password) {
+function transport(user, pass) {
   // winter.wd@qq.com
-  let splits = username.split('@')
-  let host = 'pop' + splits[1]
+  let splits = user.split('@')
+  let host = 'smtp.' + splits[1]
   return {
     host,
-    port: 995,
-    tls: true,
-    mailparser: true,
-    username,
-    password,
-    options: {
-      secureContext: {
-        passphrase: "passphrase"
-      }
-    }
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {user, pass}
   }
 }
 
@@ -28,15 +21,7 @@ export const eMailOAuth = (authInfo, callback = (res) => {}) => {
     return
   }
 
-  var client = new Client(popClient(account, password));
-
-  (async () => {
-    await client.connect();
-    const messages = await client.retrieveAll();
-    messages.forEach((message) => {
-      console.log(message.subject);
-    });
-  })().catch(console.error);
+  // let transporter = new nodemailer.createTransport({account,password});
 };
 
 // eMailOAuth.prototype.connect = function(callback) {
