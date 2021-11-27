@@ -14,7 +14,6 @@
   right: 0;
   bottom: 0;
   left: 0;
-  top: 60%;
   border-radius: 40rpx 40rpx 0 0;
   padding: 50rpx;
   z-index: 9;
@@ -27,9 +26,13 @@
 }
 
 .modal_tip_detail_tip {
-  margin: 70rpx 0;
+  margin: 50rpx 0;
+  margin-bottom: 60rpx;
   display: flex;
   justify-content: center;
+  font-size: 30rpx;
+  color: gray;
+  line-height: 40rpx;
 }
 
 .modal_tip_detail_button {

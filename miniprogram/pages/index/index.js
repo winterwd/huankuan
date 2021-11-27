@@ -21,8 +21,8 @@ Page({
     })
 
     let authInfo = wx.getStorageSync('OAuthInfoKey')
-    console.log("OAuthInfoKey:" + info)
-    if (info != null && info != "") {
+    console.log("OAuthInfoKey:" + authInfo)
+    if (authInfo != null && authInfo != "") {
       this.setData({
         disabledBtn: false,
         authInfo
