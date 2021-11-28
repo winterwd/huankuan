@@ -13,7 +13,7 @@
     </view>
   </view>
 
-  <button type="primary" size="default" disabled="{{disabledBtn}}">授权登录</button>
+  <button type="primary" size="default" disabled="{{disabledBtn}}" loading="{{isAuthing}}" bindtap="loginAction">授权登录</button>
 
   <use-tip-modal showUseTipProps="{{showTip}}" bind:customevent="useTipModalTap"></use-tip-modal>
 </view>

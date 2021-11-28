@@ -1,5 +1,6 @@
 {
   "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
     "urlCheck": true,
     "es6": true,
@@ -41,6 +42,7 @@
   "appid": "wx94afed704a1deb5d",
   "projectname": "%E8%BF%98%E6%AC%BE%E6%8F%90%E9%86%92",
   "libVersion": "2.14.1",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
       "list": []

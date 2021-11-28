@@ -1,11 +1,9 @@
 // index.js
-// const eMailOAuth = require('../../utils/eMailOAuth')
-import eMailOAuth from "../../utils/eMailOAuth";
 
 Page({
   data: {
     showTip: false,
-    isOAuthing: false,
+    isAuthing: false,
     disabledBtn: true,
     authInfo: {
       account: "",
@@ -20,7 +18,11 @@ Page({
       showTip: !show
     })
 
-    let authInfo = wx.getStorageSync('OAuthInfoKey')
+    // let authInfo = wx.getStorageSync('OAuthInfoKey')
+    let authInfo = {
+      account: "mixiu2009@126.com",
+      password: "xxx"
+    }
     console.log("OAuthInfoKey:" + authInfo)
     if (authInfo != null && authInfo != "") {
       this.setData({
@@ -29,7 +31,7 @@ Page({
       })
 
       // login
-      loginAction()
+      // this.loginAction(null)
     } 
   },
 
@@ -40,40 +42,61 @@ Page({
   },
 
   bindKeyInput: function (e) {
+    var {account, password} = this.data.authInfo
     let type = e.target.id
     if (type == "account") {
-      console.log("bindKeyInput account:" + e.detail.value)
       account = e.detail.value
-      password = this.data.authInfo.password
-      enableLoginBtn(account, password)
+      this.enableLoginBtn({account, password})
     }
     else if (type == "password") {
-      console.log("bindKeyInput password:" + e.detail.value)
       password = e.detail.value;
-      account = this.data.authInfo.account
-      enableLoginBtn(account, password)
+      this.enableLoginBtn({account, password})
     }
   },
 
-  enableLoginBtn(account, password) {
-    enable = account.has("@") && account.has('.com') && password.length > 3
+  enableLoginBtn(info) {
+    let {account, password} = info
+    let enable = account.includes("@") && account.includes(".com") && password.length > 3
     this.setData({
       disabledBtn: !enable,
-      authInfo: {account, password}
+      authInfo: info
     })
   },
 
   loginAction(e) {
+    if (this.data.disabledBtn) {return}
+    if (this.data.isAuthing) {return}
     console.log('login...')
-    isOAuthing = true
-    this.setData({isOAuthing})
+    this.setData({isAuthing: true})
 
-    this.eMailOAuth = eMailOAuth(this.data.authInfo, (res) => {
-      this.setData({isOAuthing:false})
-
-      if (res != null) {
-        console.log(res)
-      }
+    wx.cloud.callFunction({
+      // name: 'imapmsg',
+      name: 'popmsg',
+      data: this.data.authInfo
+    }).then(res => {
+      this.setData({isAuthing: false})
+      console.log(res)
+    }).catch( err => {
+      this.setData({isAuthing: false})
+      console.log(err)
     })
+
+    // var {account, password} = this.data.authInfo
+    // wx.cloud.callFunction({
+    //   name: 'sendmail',
+    //   data: {
+    //     account, password,
+    //     to: 'winter.wd@qq.com',
+    //     subject: '你好',
+    //     text: 'hello',
+    //     html: '<p><b>你好：</b><img src=""></p>' +'<p>欢迎欢迎<br/></p>'
+    //   }
+    // }).then(res => {
+    //   this.setData({isAuthing: false})
+    //   console.log(res)
+    // }).catch( err => {
+    //   this.setData({isAuthing: false})
+    //   console.log(err)
+    // })
   }
 });
